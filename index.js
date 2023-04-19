@@ -30,7 +30,7 @@ const url = require("url");
 ///////////////////////////////////////
 // SERVER
 
-const data = fs.readFileSync(`complete-node-bootcamp-master/1-node-farm/starter/dev-data/data.json`, "utf-8");
+const data = fs.readFileSync(`1-node-farm/starter/dev-data/data.json`, "utf-8");
 const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
