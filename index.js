@@ -30,19 +30,30 @@ const url = require("url");
 ///////////////////////////////////////
 // SERVER
 
+const tempOverview = fs.readFileSync(`1-node-farm/starter/templates/template-overview.html`, "utf-8");
+const tempCard = fs.readFileSync(`1-node-farm/starter/templates/template-card.html`, "utf-8");
+const tempProduct = fs.readFileSync(`1-node-farm/starter/templates/template-product.html`, "utf-8");
 const data = fs.readFileSync(`1-node-farm/starter/dev-data/data.json`, "utf-8");
 const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
-
     const pathName = req.url;
+
+    //Overview page
     if(pathName === "/" || pathName === "/overview"){
-        res.end("This is the overview")
+        res.writeHead(200, {"Content-type" : "text/html"});
+        res.end(tempOverview);
+
+    //Product Page
     } else if (pathName === "/product"){
         res.end("This is the product")
+
+    //API
     } else if(pathName === "/api") {
         res.writeHead(200, {"Content-type" : "application/json"});
         res.end(data);
+
+    //Not found
     } else {
         res.writeHead(404, {
             "Content-type" : "text/html",
