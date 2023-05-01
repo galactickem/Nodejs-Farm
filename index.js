@@ -61,6 +61,7 @@ const server = http.createServer((req, res) => {
         res.writeHead(200, {"Content-type" : "text/html"});
 
         const cardsHtml = dataObj.map(el => replaceTemplate(tempCard, el)).join("");
+
         const output = tempOverview.replace("{%PRODUCT_CARDS%}", cardsHtml);
         res.end(output);
 
@@ -83,6 +84,7 @@ const server = http.createServer((req, res) => {
             "my-own-header" : "hello-world"
         });
         res.end("<h1>Page not found!</h1>");
+        res.end(" ")
     }
 });
 
